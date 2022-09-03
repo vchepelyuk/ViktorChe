@@ -1,39 +1,43 @@
+package com.vc.collections.list.impl;
+
+import com.vc.collections.list.List;
+
 import java.util.Arrays;
 
-public class CarArrayList implements CarList{
-    
-    private Car[] array = new Car[10];
+public class ArrayList<T> implements List<T> {
+
+    private Object[] array = new Object[10];
     private int size = 0;
 
     @Override
-    public void add(Car car, int index) {
+    public void add(T element, int index) {
         increaseArray();
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         System.arraycopy(array, 6, array, index + 1, size - index);
-        array[index] = car;
+        array[index] = element;
         size++;
     }
 
     @Override
-    public Car get(int index) {
+    @SuppressWarnings("unchecked")
+    public T get(int index) {
         checkIndex(index);
-        return array[index];
+        return (T) array[index];
     }
 
     @Override
-    public void add(Car car) {
+    public void add(T element) {
         increaseArray();
-        array[size] = car;
+        array[size] = element;
         size++;
-
     }
 
     @Override
-    public boolean remove(Car car) {
+    public boolean remove(T element) {
         for (int i = 0; i < size; i++) {
-            if (array[i].equals(car)) {
+            if (array[i].equals(element)) {
                 return removeAt(i);
             }
         }
@@ -55,17 +59,17 @@ public class CarArrayList implements CarList{
 
     @Override
     public void clear() {
-        array = new Car[10];
+        array = new Object[10];
         size = 0;
     }
 
-    private void checkIndex (int index) {
+    private void checkIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
     }
 
-    private void increaseArray () {
+    private void increaseArray() {
         if (size >= array.length) {
             array = Arrays.copyOf(array, array.length * 2);
         }

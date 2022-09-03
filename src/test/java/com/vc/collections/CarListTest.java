@@ -1,14 +1,21 @@
+package com.vc.collections;
+
+import com.vc.collections.list.List;
+import com.vc.collections.list.impl.ArrayList;
+import com.vc.collections.list.impl.LinkedList;
+import com.vc.collections.model.Car;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class CarListTest {
 
-    private CarList carList;
+    private List<Car> carList;
 
-    @org.junit.Before
-    public void setUp() throws Exception {
-        carList = new CarLinkedList2();
+    @Before
+    public void setUp() {
+        carList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             carList.add(new Car("Brand" + i, i));
         }
