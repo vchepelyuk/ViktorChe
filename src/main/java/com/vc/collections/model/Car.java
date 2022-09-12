@@ -20,7 +20,25 @@ public class Car {
         return number;
     }
 
-//    public static final String CAR_NAME;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (number != car.number) return false;
+        return brand != null ? brand.equals(car.brand) : car.brand == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = brand != null ? brand.hashCode() : 0;
+        result = 31 * result + number;
+        return result;
+    }
+
+    //    public static final String CAR_NAME;
 //
 //    static {
 //        CAR_NAME = "bmw";
