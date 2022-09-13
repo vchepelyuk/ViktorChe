@@ -23,7 +23,7 @@ public class HashSet implements Set {
         return added;
     }
 
-    private boolean add(Car car, Entry[] dst) {
+    public boolean add(Car car, Entry[] dst) {
         int position = getElementPosition(car, dst.length);
         if (dst[position] == null) {
             Entry entry = new Entry(car, null);
@@ -35,7 +35,7 @@ public class HashSet implements Set {
                 if (existedElement.getValue().equals(car)) {
                     return false;
                 } else if (existedElement.getNext() == null) {
-                    existedElement.getNext() = new Entry (car, null);
+                    existedElement.setNext(new Entry(car, null));
                     return true;
                 } else {
                     existedElement = existedElement.getNext();
@@ -43,6 +43,8 @@ public class HashSet implements Set {
             }
         }
     }
+
+
 
     @Override
     public boolean remove(Car car) {
@@ -58,7 +60,7 @@ public class HashSet implements Set {
             return true;
         } while (last != null) {
             if (last.getValue().equals(car)) {
-                secondLast.getNext() = last.getNext();
+                secondLast.setNext(last.getNext());
                 size--;
                 return true;
             } else {
@@ -71,7 +73,7 @@ public class HashSet implements Set {
 
     @Override
     public int size() {
-        return size();
+        return size;
     }
 
     @Override
@@ -93,6 +95,7 @@ public class HashSet implements Set {
                 existedElement = existedElement.getNext();
             }
         }
-        array = newArray;
     }
 }
+
+
