@@ -15,7 +15,7 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public void add(T element) {
+    public boolean add(T element) {
         if (size == 0) {
             first = new Node<>(null, element, null);
             last = first;
@@ -25,16 +25,17 @@ public class LinkedList<T> implements List<T> {
             secondLast.setNext(last);
         }
         size++;
+        return true;
     }
 
     @Override
-    public void add(T element, int index) {
+    public boolean add(T element, int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         if (index == size) {
-            add(element);
-            return;
+           return add(element);
+
         }
         Node<T> nodeNext = getNode(index);
         Node<T> nodePrev = nodeNext.getPrevious();
@@ -46,18 +47,22 @@ public class LinkedList<T> implements List<T> {
             first = newNode;
         }
         size++;
+        return true;
     }
 
     @Override
     public boolean remove(T element) {
-        Node<T> node = first;
-        for (int i = 0; i < size; i++) {
-            if (node.getValue().equals(element)) {
-                return removeAt(i);
-            }
-            node = node.getNext();
+        int index = findElement(element);
+        if (index != -1) {
+            return removeAt(index);
         }
         return false;
+    }
+
+    @Override
+    public boolean contains(T element) {
+        int index = findElement(element);
+        return index != -1;
     }
 
     @Override
@@ -89,6 +94,17 @@ public class LinkedList<T> implements List<T> {
         first = null;
         last = null;
         size = 0;
+    }
+
+    private int findElement(T element) {
+        Node<T> node = first;
+        for (int i = 0; i < size; i++) {
+            if (node.getValue().equals(element)) {
+                return i;
+            }
+            node = node.getNext();
+        }
+        return -1;
     }
 
     private Node<T> getNode(int index) {

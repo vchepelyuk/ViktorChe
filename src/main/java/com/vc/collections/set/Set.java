@@ -1,11 +1,12 @@
 package com.vc.collections.set;
 
-import com.vc.collections.model.Car;
+import com.vc.collections.Collections;
 
-public interface Set {
-    boolean add(Car car);
 
-    boolean remove(Car car);
+public interface  Set<T> extends Collections<T> {
+    boolean add(T element);
+
+    boolean remove(T element);
 
     int size();
 

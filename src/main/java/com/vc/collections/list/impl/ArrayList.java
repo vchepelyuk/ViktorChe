@@ -10,7 +10,7 @@ public class ArrayList<T> implements List<T> {
     private int size = 0;
 
     @Override
-    public void add(T element, int index) {
+    public boolean add(T element, int index) {
         increaseArray();
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
@@ -18,6 +18,7 @@ public class ArrayList<T> implements List<T> {
         System.arraycopy(array, 6, array, index + 1, size - index);
         array[index] = element;
         size++;
+        return true;
     }
 
     @Override
@@ -28,10 +29,11 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public void add(T element) {
+    public boolean add(T element) {
         increaseArray();
         array[size] = element;
         size++;
+        return true;
     }
 
     @Override
@@ -39,6 +41,16 @@ public class ArrayList<T> implements List<T> {
         for (int i = 0; i < size; i++) {
             if (array[i].equals(element)) {
                 return removeAt(i);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean contains(T element) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(element)) {
+                return true;
             }
         }
         return false;

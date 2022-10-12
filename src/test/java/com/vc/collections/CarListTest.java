@@ -15,7 +15,7 @@ public class CarListTest {
 
     @Before
     public void setUp() {
-        carList = new ArrayList<>();
+        carList = new LinkedList<>();
         for (int i = 0; i < 100; i++) {
             carList.add(new Car("Brand" + i, i));
         }
