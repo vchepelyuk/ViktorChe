@@ -1,13 +1,30 @@
 package com.vc.collections.list.impl;
 
 import com.vc.collections.list.List;
+import com.vc.collections.list.Queue;
 import com.vc.collections.model.Node;
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T> implements List<T>, Queue<T> {
 
     private Node<T> first;
     private Node<T> last;
     private int size = 0;
+
+    @Override
+    public T peek() {
+        if (size > 0) {
+            return get(0);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public T poll() {
+        T element = get(0);
+        removeAt(0);
+        return element;
+    }
 
     @Override
     public T get(int index) {

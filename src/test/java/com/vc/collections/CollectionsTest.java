@@ -11,11 +11,11 @@ import static org.junit.Assert.*;
 
 public class CollectionsTest {
 
-    private Collections collections;
+    private Collections<Car> collections;
 
     @Before
     public void setUp() throws Exception {
-        collections = new LinkedList();
+        collections = new HashSet<>();
         for (int i = 0; i < 100; i++) {
             collections.add(new Car("Brand" + i, i));
         }

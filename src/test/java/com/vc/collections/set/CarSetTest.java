@@ -9,11 +9,11 @@ import static org.junit.Assert.*;
 
 public class CarSetTest {
 
-    private Set carSet;
+    private Set<Car> carSet;
 
     @Before
     public void setUp() throws Exception {
-        carSet = new HashSet();
+        carSet = new HashSet<>();
         for (int i = 0; i < 100; i++) {
             carSet.add(new Car("Brand" + i, i));
         }
