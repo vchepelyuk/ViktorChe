@@ -9,6 +9,5 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        List<Car> cars = new ArrayList<>();
     }
 }

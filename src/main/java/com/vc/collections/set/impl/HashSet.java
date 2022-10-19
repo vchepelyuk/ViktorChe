@@ -1,5 +1,4 @@
 package com.vc.collections.set.impl;
-import com.vc.collections.model.Entry;
 import com.vc.collections.set.Set;
 
 import java.util.HashMap;

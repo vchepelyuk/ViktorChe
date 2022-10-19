@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CarSetTest {
+public class SetTest {
 
     private Set<Car> carSet;
 

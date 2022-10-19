@@ -41,7 +41,7 @@ public class MapTest {
     @Test
     public void removeReturnTrueOnlyOnce() {
         for (int i = 0; i < 10; i++) {
-            CarOwner carOwner = new CarOwner(i, "Name" + i, "lastName" + i);
+            CarOwner carOwner = new CarOwner(i, "Name" + i, "LastName" + i);
             Car car = new Car("Brand" + i, i);
             map.put(carOwner, car);
         }
@@ -56,7 +56,7 @@ public class MapTest {
     @Test
     public void countOfKeysMustBeEqualsToCountOfValues() {
         for (int i = 0; i < 100; i++) {
-            CarOwner carOwner = new CarOwner(i, "Name" + i, "lastName" + i);
+            CarOwner carOwner = new CarOwner(i, "Name" + i, "LastName" + i);
             Car car = new Car("Brand" + i, i);
             map.put(carOwner, car);
         }
@@ -64,6 +64,7 @@ public class MapTest {
         assertEquals(100, map.keySet().size());
         assertEquals(100, map.values().size());
     }
+
 
     @Test
     public void methodGetReturnRightValue() {
