@@ -1,7 +1,6 @@
 package com.vc.collections;
 
 import com.vc.collections.list.List;
-import com.vc.collections.list.impl.ArrayList;
 import com.vc.collections.list.impl.LinkedList;
 import com.vc.collections.model.Car;
 import org.junit.Before;
